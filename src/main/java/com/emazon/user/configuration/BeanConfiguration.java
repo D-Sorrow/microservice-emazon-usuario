@@ -1,14 +1,17 @@
 package com.emazon.user.configuration;
 
 import com.emazon.user.adapters.driven.jpa.mysql.adapter.AdapterUser;
+import com.emazon.user.adapters.driven.jpa.mysql.adapter.EncoderAdapter;
 import com.emazon.user.adapters.driven.jpa.mysql.mapper.IUserMapperEntity;
 import com.emazon.user.adapters.driven.jpa.mysql.repository.IUserRepository;
 import com.emazon.user.domain.api.IUserServicePort;
 import com.emazon.user.domain.api.usecase.UserUseCase;
+import com.emazon.user.domain.spi.IEncoderPort;
 import com.emazon.user.domain.spi.IUserPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
@@ -17,6 +20,7 @@ public class BeanConfiguration {
 
     private final IUserRepository userRepository;
     private final IUserMapperEntity userMapperEntity;
+    private final PasswordEncoder passwordEncoder;
 
     @Bean
     public IUserPersistencePort userPersistencePort() {
@@ -25,6 +29,11 @@ public class BeanConfiguration {
 
     @Bean
     public IUserServicePort userServicePort() {
-        return new UserUseCase(userPersistencePort());
+        return new UserUseCase(userPersistencePort(),encoderPort());
+    }
+
+    @Bean
+    public IEncoderPort encoderPort() {
+        return new EncoderAdapter(passwordEncoder);
     }
 }

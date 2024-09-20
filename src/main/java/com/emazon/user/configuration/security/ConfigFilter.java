@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static com.emazon.user.configuration.constants.ConstConfig.*;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -22,8 +24,8 @@ public class ConfigFilter {
                     .httpBasic(Customizer.withDefaults())
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(http -> {
-                        http.requestMatchers("/auth/**").permitAll();
-                        http.requestMatchers("/auth/save").hasRole("ADMIN");
+                        http.requestMatchers(DIRECTION_CONTROLLER_SAVE_USER_ROLE)
+                                .hasRole(DIRECTION_CONTROLLER_SAVE_USER_HAS_ROLE_ADMIN);
                         http.anyRequest().denyAll();
                     })
                     .build();

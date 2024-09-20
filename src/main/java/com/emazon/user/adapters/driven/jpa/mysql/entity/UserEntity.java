@@ -1,22 +1,18 @@
 package com.emazon.user.adapters.driven.jpa.mysql.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @AllArgsConstructor
 @Data
 @Table(name = "user")
 @NoArgsConstructor
-public class UserEntity  {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +34,7 @@ public class UserEntity  {
     @Column(name = "user_birth_date",nullable = false)
     private Date dateOfBirth;
 
-    @Column(name = "user_email",nullable = false)
+    @Column(name = "user_email",nullable = false, unique = true)
     private String userEmail;
 
     @Column(name = "user_password",nullable = false)

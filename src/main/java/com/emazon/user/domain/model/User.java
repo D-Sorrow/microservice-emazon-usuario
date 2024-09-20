@@ -26,7 +26,8 @@ public class User {
 
     private RolEnum role;
 
-    public User(Long userId, Long identityDocument, String userName, String userLastName, String userPhoneNumber, Date dateOfBirth, String userEmail, String userPassword, RolEnum role) {
+    public User(Long userId, Long identityDocument, String userName, String userLastName,
+                String userPhoneNumber, Date dateOfBirth, String userEmail, String userPassword, RolEnum role) {
         this.userId = userId;
         this.identityDocument = identityDocument;
         this.userName = userName;
@@ -36,6 +37,10 @@ public class User {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.role = role;
+    }
+
+    public User() {
+
     }
 
     public Long getUserId() {

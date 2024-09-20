@@ -1,5 +1,6 @@
 package com.emazon.user.adapters.driving.http.dto;
 
+import com.emazon.user.adapters.driving.http.contants.ControllerConstants;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,40 +11,39 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
+import static com.emazon.user.adapters.driving.http.contants.ControllerConstants.NOT_NULL_USER_ID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class RequestUser {
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = NOT_NULL_USER_ID)
     private Long userId;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = ControllerConstants.NOT_NULL_IDENTITY_DOCUMENT)
     private Long identityDocument;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = ControllerConstants.NOT_NULL_USER_NAME)
+    @NotBlank(message = ControllerConstants.NOT_BLANK_USER_NAME)
     private String userName;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = ControllerConstants.NOT_NULL_USER_LAST_NAME)
+    @NotBlank(message = ControllerConstants.NOT_BLANK_USER_LAST_NAME)
     private String userLastName;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = ControllerConstants.NOT_NULL_PHONE_NUMBER)
+    @NotBlank(message = ControllerConstants.NOT_BLANK_PHONE_NUMBER)
     private String userPhoneNumber;
 
-    @NotNull
-    @NotBlank
-    private Date dateOfBirth;
+    @NotNull(message = ControllerConstants.NOT_NULL_DATE_OF_BIRTH)
+    private LocalDate dateOfBirth;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = ControllerConstants.NOT_NULL_EMAIL)
+    @NotBlank(message = ControllerConstants.NOT_BLANK_EMAIL)
     private String userEmail;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = ControllerConstants.NOT_NULL_PASSWORD)
+    @NotBlank(message = ControllerConstants.NOT_BLANK_PASSWORD)
     private String userPassword;
 }
