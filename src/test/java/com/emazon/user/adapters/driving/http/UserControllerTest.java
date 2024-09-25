@@ -1,11 +1,9 @@
 package com.emazon.user.adapters.driving.http;
 
-import com.emazon.user.adapters.driving.http.dto.RequestUser;
+import com.emazon.user.adapters.driving.http.dto.UserRequest;
 import com.emazon.user.adapters.driving.http.mapper.IUserMapperRequest;
 import com.emazon.user.domain.api.IUserServicePort;
 import com.emazon.user.domain.model.User;
-import com.emazon.user.provider.DataProviderUser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -49,7 +46,7 @@ class UserControllerTest {
 
         User user = new User();
 
-        when(mapperRequest.toUser(any(RequestUser.class))).thenReturn(user);
+        when(mapperRequest.toUser(any(UserRequest.class))).thenReturn(user);
         doNothing().when(userServicePort).saveUser(user);
 
         String mapArticleJson = new ObjectMapper().writeValueAsString(user);

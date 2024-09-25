@@ -8,15 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.UUID;
 
 import static com.emazon.user.adapters.driving.http.contants.ControllerConstants.NOT_NULL_USER_ID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RequestUser {
+public class UserRequest {
 
     @NotNull(message = NOT_NULL_USER_ID)
     private Long userId;

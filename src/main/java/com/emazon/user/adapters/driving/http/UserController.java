@@ -1,6 +1,6 @@
 package com.emazon.user.adapters.driving.http;
 
-import com.emazon.user.adapters.driving.http.dto.RequestUser;
+import com.emazon.user.adapters.driving.http.dto.UserRequest;
 import com.emazon.user.adapters.driving.http.mapper.IUserMapperRequest;
 import com.emazon.user.domain.api.IUserServicePort;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static com.emazon.user.adapters.driven.jpa.mysql.constants.ConstantsAdapters.*;
+import static com.emazon.user.adapters.driving.http.contants.ControllerConstants.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -30,7 +31,7 @@ public class UserController {
     })
 
     @PostMapping("/saveUser")
-    public ResponseEntity<Void> saveUser(@RequestBody RequestUser user){
+    public ResponseEntity<Void> saveUser(@RequestBody UserRequest user){
         userService.saveUser(userMapperRequest.toUser(user));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

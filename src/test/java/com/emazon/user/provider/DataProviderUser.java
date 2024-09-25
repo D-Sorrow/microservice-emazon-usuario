@@ -1,7 +1,6 @@
 package com.emazon.user.provider;
 
 import com.emazon.user.adapters.driven.jpa.mysql.entity.RolEnum;
-import com.emazon.user.adapters.driving.http.dto.RequestUser;
 import com.emazon.user.domain.model.User;
 
 import java.time.LocalDate;

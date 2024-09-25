@@ -24,9 +24,12 @@ public class ConfigFilter {
                     .httpBasic(Customizer.withDefaults())
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(http -> {
+                        http.requestMatchers("/authenticationUser/login").permitAll();
+
                         http.requestMatchers(DIRECTION_CONTROLLER_SAVE_USER_ROLE)
                                 .hasRole(DIRECTION_CONTROLLER_SAVE_USER_HAS_ROLE_ADMIN);
-                        http.anyRequest().denyAll();
+
+                        http.anyRequest().permitAll();
                     })
                     .build();
     }

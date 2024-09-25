@@ -1,6 +1,6 @@
 package com.emazon.user.configuration.security;
 
-import com.emazon.user.configuration.service.UserDetailsServiceImpl;
+import com.emazon.user.adapters.driven.jpa.mysql.adapter.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class BeanSecurity {
 
-   @Bean
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
