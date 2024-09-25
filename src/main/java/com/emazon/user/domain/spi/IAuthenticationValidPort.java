@@ -4,5 +4,5 @@ import com.emazon.user.domain.model.User;
 
 public interface IAuthenticationValidPort {
 
-    public User authenticate(String username, String password);
+    public User authenticate(String email, String password);
 }

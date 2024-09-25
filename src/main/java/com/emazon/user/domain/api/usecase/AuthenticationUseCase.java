@@ -1,7 +1,6 @@
 package com.emazon.user.domain.api.usecase;
 
 import com.emazon.user.domain.api.IAuthenticationServicePort;
-import com.emazon.user.domain.model.User;
 import com.emazon.user.domain.spi.IAuthenticationValidPort;
 import com.emazon.user.domain.spi.IJwtProvider;
 
