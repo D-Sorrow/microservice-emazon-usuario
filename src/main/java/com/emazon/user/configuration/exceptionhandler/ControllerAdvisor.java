@@ -1,6 +1,8 @@
 package com.emazon.user.configuration.exceptionhandler;
 
 
+import com.emazon.user.configuration.exception.ErrorMapperUserAuthenticationException;
+import com.emazon.user.configuration.exception.NullHeaderJwtException;
 import com.emazon.user.domain.exception.AgeNotValidException;
 import com.emazon.user.domain.exception.EmailInvalidException;
 import com.emazon.user.domain.exception.InvalidDocumentException;
@@ -50,6 +52,22 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> exceptionHandlerPhoneNumberInvalid(Exception ex) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(
                 String.format(MESSAGE_PHONE_INVALID_EXCEPTION, ex.getMessage()),
+                HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(NullHeaderJwtException.class)
+    public ResponseEntity<ExceptionResponse> exceptionHandlerNullHeader(Exception ex) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                String.format(MESSAGE_NULL_HEADER_JWT_EXCEPTION, ex.getMessage()),
+                HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
+        ));
+    }
+
+    @ExceptionHandler(ErrorMapperUserAuthenticationException.class)
+    public ResponseEntity<ExceptionResponse> exceptionHandlerUserAuthentication(Exception ex) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                String.format(MESSAGE_ERROR_MAPPER_USER, ex.getMessage()),
                 HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
         ));
     }

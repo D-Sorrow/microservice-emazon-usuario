@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import static com.emazon.user.adapters.driven.jpa.mysql.constants.ConstantsAdapters.*;
@@ -29,7 +30,6 @@ public class UserController {
             @ApiResponse(responseCode = RESPONSE_CODE_INVALID, description = DESCRIPTION_INVALID, content = @Content),
             @ApiResponse(responseCode = RESPONSE_CODE_SERVER_ERROR, description = DESCRIPTION_SERVER_ERROR, content = @Content)
     })
-
     @PostMapping("/saveUser")
     public ResponseEntity<Void> saveUser(@RequestBody UserRequest user){
         userService.saveUser(userMapperRequest.toUser(user));

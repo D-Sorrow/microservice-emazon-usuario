@@ -1,4 +1,4 @@
-package com.emazon.user.adapters.driven.jpa.mysql.adapter;
+package com.emazon.user.configuration.security;
 
 import com.emazon.user.adapters.driven.jpa.mysql.entity.UserEntity;
 import com.emazon.user.adapters.driven.jpa.mysql.repository.IUserRepository;
@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         authorities.add(new SimpleGrantedAuthority(CONCAT_ROLE_PREFIX.concat(userEntity.getRole().name())));
         return new User(
-                userEntity.getUserName(),
+                userEntity.getUserEmail(),
                 userEntity.getUserPassword(),
                 authorities
         );
