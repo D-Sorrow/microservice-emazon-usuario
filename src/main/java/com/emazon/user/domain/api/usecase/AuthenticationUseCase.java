@@ -16,6 +16,6 @@ public class AuthenticationUseCase implements IAuthenticationServicePort {
     }
     @Override
     public String authenticate(String email, String password) {
-        return jwtProvider.generateToken(authenticationValidPort.authenticate(email, password));
+        return authenticationValidPort.authenticate(email, password);
     }
 }
