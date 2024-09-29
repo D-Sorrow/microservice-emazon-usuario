@@ -19,5 +19,7 @@ public class ConstConfig {
     public static final String GET_HEADER_TOKEN_PREFIX = "Bearer ";
     public static final int INDEX_TO_ELIMINATED_BEARER = 7;
     public static final String TOKEN_NAME = "token";
+    public static final String USER_EMAIL_CLAIM_NAME = "userEmail";
+    public static final String USER_ROL_CLAIM = "role";
 
 }
