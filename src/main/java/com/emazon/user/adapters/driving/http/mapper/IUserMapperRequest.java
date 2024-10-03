@@ -1,7 +1,7 @@
 package com.emazon.user.adapters.driving.http.mapper;
 
 
-import com.emazon.user.adapters.driving.http.dto.RequestUser;
+import com.emazon.user.adapters.driving.http.dto.UserRequest;
 import com.emazon.user.domain.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,8 +15,8 @@ import static com.emazon.user.adapters.driving.http.contants.ControllerConstants
 public interface IUserMapperRequest {
 
     @Mapping(target = TARGET_ROL, constant = CONSTANT_ROL)
-    User toUser(RequestUser user);
+    User toUser(UserRequest user);
 
-    RequestUser toRequestUser(User user);
+    UserRequest toRequestUser(User user);
     List<User> toUsers(List<User> users);
 }

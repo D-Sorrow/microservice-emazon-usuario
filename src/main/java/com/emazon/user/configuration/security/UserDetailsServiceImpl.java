@@ -1,4 +1,4 @@
-package com.emazon.user.configuration.service;
+package com.emazon.user.configuration.security;
 
 import com.emazon.user.adapters.driven.jpa.mysql.entity.UserEntity;
 import com.emazon.user.adapters.driven.jpa.mysql.repository.IUserRepository;
@@ -24,17 +24,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        UserEntity userEntity = userRepository.findByUserName(username);
+        UserEntity userEntity = userRepository.findByUserEmail(email);
 
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
         authorities.add(new SimpleGrantedAuthority(CONCAT_ROLE_PREFIX.concat(userEntity.getRole().name())));
         return new User(
-                userEntity.getUserName(),
+                userEntity.getUserEmail(),
                 userEntity.getUserPassword(),
                 authorities
         );
     }
+
+
+
 }
