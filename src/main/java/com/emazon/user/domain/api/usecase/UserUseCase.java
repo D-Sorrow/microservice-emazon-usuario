@@ -13,7 +13,6 @@ import com.emazon.user.domain.spi.IUserPersistencePort;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.emazon.user.domain.constants.ConstantsDomain.AGE_NO_VALID;

@@ -1,8 +1,10 @@
 package com.emazon.user.adapters.driving.http.dto;
 
+import com.emazon.user.adapters.driven.jpa.mysql.entity.RolEnum;
 import com.emazon.user.adapters.driving.http.contants.ControllerConstants;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,4 +46,9 @@ public class UserRequest {
     @NotNull(message = ControllerConstants.NOT_NULL_PASSWORD)
     @NotBlank(message = ControllerConstants.NOT_BLANK_PASSWORD)
     private String userPassword;
+
+    @NotNull(message = ControllerConstants.NOT_NULL_PASSWORD)
+    @NotBlank(message = ControllerConstants.NOT_BLANK_PASSWORD)
+    @Pattern(regexp = "AUX_BODEGA|CLIENT", message = "The role must be either AUX_BODEGA or CLIENT")
+    private String role;
 }

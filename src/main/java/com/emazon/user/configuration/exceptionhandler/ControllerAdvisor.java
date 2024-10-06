@@ -1,6 +1,7 @@
 package com.emazon.user.configuration.exceptionhandler;
 
 
+import com.emazon.user.adapters.driving.http.exception.RoleIsNotValid;
 import com.emazon.user.configuration.exception.ErrorMapperUserAuthenticationException;
 import com.emazon.user.configuration.exception.NullHeaderJwtException;
 import com.emazon.user.domain.exception.AgeNotValidException;
@@ -68,6 +69,13 @@ public class ControllerAdvisor {
     public ResponseEntity<ExceptionResponse> exceptionHandlerUserAuthentication(Exception ex) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(
                 String.format(MESSAGE_ERROR_MAPPER_USER, ex.getMessage()),
+                HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
+        ));
+    }
+    @ExceptionHandler(RoleIsNotValid.class)
+    public ResponseEntity<ExceptionResponse> exceptionHandlerRoleIsNotValid(Exception ex) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(
+                String.format(MESSAGE_ROL_IS_NOT_VALID, ex.getMessage()),
                 HttpStatus.BAD_REQUEST.toString(), LocalDateTime.now()
         ));
     }

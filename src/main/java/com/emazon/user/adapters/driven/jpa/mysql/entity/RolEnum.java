@@ -4,4 +4,5 @@ public enum RolEnum {
 
     ADMIN,
     AUX_BODEGA,
+    CLIENT,
 }

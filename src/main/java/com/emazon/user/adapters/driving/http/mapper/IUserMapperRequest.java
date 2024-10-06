@@ -14,7 +14,6 @@ import static com.emazon.user.adapters.driving.http.contants.ControllerConstants
 @Mapper(componentModel = "spring")
 public interface IUserMapperRequest {
 
-    @Mapping(target = TARGET_ROL, constant = CONSTANT_ROL)
     User toUser(UserRequest user);
 
     UserRequest toRequestUser(User user);
